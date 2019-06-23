@@ -3,8 +3,8 @@ neuronTag::neuronTag(){
     NT = NULL;
 }
 /*
-neuronTag::neuronTag(int id){
-    idcounter = id;
+neuronTag::neuronTag(int number){
+    ;
     NT = new neuron(id);  
 }
 */

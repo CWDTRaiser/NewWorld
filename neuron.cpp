@@ -1,5 +1,5 @@
+/*
 neuron::neuron(){
-    cout << "error in creating neuron" << endl;
     CD = rand()%C;
     TH = rand()%100;
     NS = rand()%100;
@@ -11,41 +11,44 @@ neuron::neuron(){
     RN = rand()%Y;
     OT = 0;    
 }
-
+*/
 neuron::neuron(int i){
     //initialize neuron    
     name = i;
-    CD = rand()%C;
-    TH = rand()%100;
-    NS = rand()%100;
     at = 0;
-    MP = rand()%100;
-    MPD = rand()%D;
-    PreN = 0;
-    PND = rand()%X;
-    RN = rand()%Y;
+    
+    dendrite = NULL;
+    
+    BMP = rand()%100;
+    TH = rand()%100; //rand()%100
+    BMPD = rand()%D;
+    CD = rand()%C;
+
     OT = 0;
+    RN = rand()%Y;
+    PND = rand()%X;
+}
+
+void neuron::set_synapseGroup(int neuronNumber){
+    dendrite = new synapseGroup [neuronNumber];
+    for(int i = 0; i < neuronNumber; i++){
+        dendrite[i].
+    }
 }
 
 void neuron::NeuronExe(){
     
-    for(int Ni = 0; Ni < PreN; Ni++){
-        int rate = rand()%100;    
-        if(NS >= rate){
-            MP = MP + Z;
-        }
-    }
-    if(MP > TH){
-        test.open("log", ios::app);
-        test << "neuron" << name << " fire!! at time " << at << endl;
-        test.close();
+    if(BMP > TH){
         at = at + CD;
         OT = 1;
-        MP = MP - TH;
+        BMP = BMP - TH;
+        
+        //test.open("log", ios::app);
+        //test << "neuron" << name << " fire!! at time " << at << endl;
+        //test.close();
     }else{
         at = at + 1;
     }
-    
 }
 
 void neuron::NeuronSave(){
