@@ -12,7 +12,7 @@
 #include "menu.h"
 using namespace std;
 
-map<int, neuronTag> Tag;
+
 /*
 void check_preNeuron(){
     
@@ -80,13 +80,13 @@ void get_neuron(){
         strcat(tempput, format);
         
         test.open(tempput, ios::in);
-        Tag[i].NT -> name = atoi(Nread_word(3).c_str());
-        Tag[i].NT -> CD = atoi(Nread_word(4).c_str());
-        Tag[i].NT -> TH = atoi(Nread_word(3).c_str());
-        Tag[i].NT -> NS = atoi(Nread_word(4).c_str());
-        Tag[i].NT -> PND = atoi(Nread_word(5).c_str());
-        Tag[i].NT -> MPD = atoi(Nread_word(5).c_str());
-        Tag[i].NT -> RN = atoi(Nread_word(5).c_str());
+        Tag[i].NT -> set_name(atoi(Nread_word(3).c_str()));
+        Tag[i].NT -> set_CD(atoi(Nread_word(4).c_str()));
+        Tag[i].NT -> set_TH(atoi(Nread_word(3).c_str()));
+        //Tag[i].NT -> NS = atoi(Nread_word(4).c_str());
+        Tag[i].NT -> set_PND(atoi(Nread_word(5).c_str()));
+        Tag[i].NT -> set_BMPD(atoi(Nread_word(5).c_str()));
+        Tag[i].NT -> set_RN(atoi(Nread_word(5).c_str()));
         
         test.close();
     }
@@ -135,12 +135,12 @@ int main(){
 
     for(int i = pastlog; i < pastlog + 100; i++){
         for(int j = 1; j < 9; j++){
-            if(Tag[j].NT -> at == i){
+            if(Tag[j].NT -> get_at() == i){
                 Tag[j].NT -> NeuronExe();
                 if(j == 8){
-                    Tag[1].NT -> PreN = Tag[1].NT -> PreN + (Tag[j].NT -> OT) * (Tag[j].NT -> RN );
+                    Tag[1].NT -> set_PN(Tag[1].NT -> get_PN() + (Tag[j].NT -> get_OT()) * (Tag[j].NT -> get_RN()));
                 }else{
-                    Tag[j+1].NT -> PreN = Tag[j+1].NT -> PreN + (Tag[j].NT -> OT) * (Tag[j].NT -> RN );
+                    Tag[j + 1].NT -> set_PN(Tag[j + 1].NT -> get_PN() + (Tag[j].NT -> get_OT()) * (Tag[j].NT -> get_RN()));;
                 }
             }
 
